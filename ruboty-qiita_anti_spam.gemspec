@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Tomoki Aonuma"]
   spec.email         = ["uasi@uasi.jp"]
 
-  spec.summary       = %q{Ruboty plug-in for Qiita anti-spam system.}
-  spec.description   = %q{Ruboty plug-in for Qiita anti-spam system.}
+  spec.summary       = %q{Ruboty plug-in for Qiita's internal anti-spam system.}
+  spec.description   = %q{Ruboty plug-in for Qiita's internal anti-spam system.}
   spec.homepage      = "https://github.com/increments/ruboty-qiita_anti_spam"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
@@ -28,4 +28,10 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.10"
   spec.add_development_dependency "rake", "~> 10.0"
+
+  spec.add_runtime_dependency "activesupport"
+  spec.add_runtime_dependency "akismet"
+  spec.add_runtime_dependency "google-api-client", "~> 0.9.pre1"
+  spec.add_runtime_dependency "qiita"
+  spec.add_runtime_dependency "ruboty"
 end

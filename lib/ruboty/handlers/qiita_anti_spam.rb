@@ -82,7 +82,7 @@ module Ruboty
       # @param user_id [String]
       # @return [Integer, nil]
       def get_permanent_user_id(user_id)
-        qiita_client.get_user(user_id).body["permanent_id"].to_i || nil rescue nil
+        Integer(qiita_client.get_user(user_id).body["permanent_id"]) rescue nil
       end
 
       def akismet_client

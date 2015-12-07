@@ -146,8 +146,10 @@ module Ruboty
         def build_query_request(opts)
           if (permanent_user_id = opts[:permanent_user_id])
             cond = %Q(user_id = #{permanent_user_id})
+            limit = 1000
           elsif (uuid = opts[:uuid])
             cond = %Q(message3 = "#{uuid}")
+            limit = 1
           else
             fail ArgumentError
           end
@@ -156,7 +158,7 @@ module Ruboty
             SELECT message1, message2
             FROM (TABLE_DATE_RANGE(qiita.events_, DATE_ADD(CURRENT_TIMESTAMP(), -7, "DAY"), CURRENT_TIMESTAMP()))
             WHERE name = "check spam" AND (#{cond})
-            LIMIT 1000
+            LIMIT #{limit}
           EOQ
           Google::Apis::BigqueryV2::QueryRequest.new(query: query)
         end
